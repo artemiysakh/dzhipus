@@ -1,0 +1,180 @@
+:root{
+  --gap: 16px;
+  --user-min-w: 240px;
+  --card-bg: #fff;
+  --card-border: #e6e6e6;
+  --muted: #6b6b6b;
+  --accent: #2b7cff;
+  --radius: 8px;
+  --pad: 16px;
+}
+
+.page{
+  display: flex;
+  gap: var(--gap);
+  padding: var(--gap);
+  min-height: calc(45vh - var(--gap)); 
+  box-sizing: border-box;
+}
+
+/* Левая карточка пользователя */
+.user-card{
+  flex: 0 0 var(--user-min-w);    
+  min-width: var(--user-min-w);
+  max-width: 320px;
+}
+
+/* Правая область */
+.orders{
+  flex: 1 1 auto;    /* занимает всё оставшееся место */
+  min-width: 0;      /* важно для корректного поведения overflow дочерних элементов */
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  min-height: 0;     /* позволяет дочерним элементам корректно скроллиться */
+}
+
+/* Общий вид карточек */
+.card{
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  overflow: hidden;
+}
+
+/* Место для содержимого карточки */
+.card-body{
+  padding: var(--pad);
+  box-sizing: border-box;
+}
+
+/* Пользовательская карточка: выравнивание */
+.user-card .card-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Текст и кнопка выхода */
+.text-muted{ color: var(--muted); margin: 0; }
+.LogOutButton,
+.logout{
+  background: transparent;
+  border: 1px solid var(--card-border);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Заголовок карточки заказов */
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #eee;
+}
+.header h4{ margin: 0; font-size: 1.05rem; }
+.PaginationItem,
+.new-order{
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Контент в карточке заказов.
+   Сделаем контейнер гибким, чтобы таблица могла занять оставшееся место и скроллиться по вертикали при необходимости
+*/
+.content{
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+/* Пустое состояние (Alert) */
+.alert,
+.alert-info,
+.alert-danger{
+  border-radius: 6px;
+  padding: 12px;
+}
+.alert-info{ background: #fbfdff; color: #1f4b6b; border: 1px solid #e6f2ff; }
+.alert-danger{ background: #fff5f5; color: #6b1f1f; border: 1px solid #ffe6e6; }
+
+/* Контейнер таблицы: горизонтальный скролл при узких экранах, вертикальный — по высоте карточки */
+.orders-table{
+  overflow: auto;            /* горизонтальный и вертикальный скролл при необходимости */
+  flex: 1 1 auto;            /* занимает доступную высоту в правой колонке */
+  min-height: 0;
+  border-radius: 6px;
+  background: transparent;
+}
+
+/* Таблица: задаём минимум ширины для предотвращения сжатия важных колонок */
+table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px; /* при необходимости скорректируй под содержимое */
+  background: #fff;
+}
+
+/* Заголовки и ячейки */
+thead th{
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--muted);
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+tbody td{
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+/* Стиль для бейджа и кнопок в таблице (пример для bootstrap-like) */
+.badge{
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+.badge-success{ background:#28a745;color:#fff; }
+.badge-warning{ background:#ffc107;color:#222; }
+.badge-secondary{ background:#6c757d;color:#fff; }
+
+table button{
+  margin: 0;
+}
+
+/* Адаптив: на мелких устройствах — стек столбцов */
+@media (max-width: 719px){
+  .page{
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+  }
+  .user-card{
+    flex: 0 0 auto;
+    min-width: 0;
+    width: 100%;
+  }
+  .orders{
+    width: 100%;
+  }
+  table{
+    min-width: 100%;
+  }
+  thead th{ font-size: 12px; }
+  tbody td{ font-size: 13px; }
+}
+
