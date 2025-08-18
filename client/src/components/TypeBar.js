@@ -16,7 +16,7 @@ import { SERVICE_ROUTE } from '../utils/consts'
     <div onClick={()=>{
       servicestore.setSelectedType(type)
       navigate(SERVICE_ROUTE + '/' + type.name)
-      }} key={type._id}  style={{ backgroundImage: `url('http://localhost:5000/${type.img}')` }} className="type_card">
+      }} key={type._id}  style={{ backgroundImage: `url('https://dzhipusserver-production.up.railway.app/${type.img}')` }} className="type_card">
         <h3 className='title_type'>{type.name}</h3>
     </div>) }
     </div>
