@@ -305,6 +305,16 @@ textarea{
         align-items: center;   
     }
 }
+#FormOrderContactsPanel{
+    @media (max-width:530px) {
+        display: none;  
+    }
+}
+#OrderButtonContactsPanel{
+    @media (min-width:530px) {
+        display: none;  
+    }
+}
 #contactsInf{
      @media (min-width:850px) {
         width: 50%;
@@ -326,7 +336,7 @@ textarea{
        justify-content: space-between;
        align-items: center;
        margin-bottom: 10px;
-     }
+     };
 }
 .contactsLinkDiv{
    display: flex;

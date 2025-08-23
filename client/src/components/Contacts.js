@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {createOrder } from '../http/ServiceApi'
-import {Button, Form} from "react-bootstrap";
+import {Button, Form, Modal} from "react-bootstrap";
 import { observer } from 'mobx-react-lite';
 import FormOrder from './modals/FormOrder';
 
@@ -9,6 +9,7 @@ import FormOrder from './modals/FormOrder';
 
 
 const Contacts = observer(({ id }) => {
+ const [formVisible, setFormVisible] = useState(false)
 
   return (
     
@@ -44,8 +45,16 @@ const Contacts = observer(({ id }) => {
                   <p className='contactsLink'><a href="https://wa.me/79028106022" target="_blank" ><i className="fab fa-whatsapp"></i> +7 902 810-60-22</a></p>
                 </div>
               </div>
+              <Button className="PaginationItem" id="OrderButtonContactsPanel" onClick={() => setFormVisible(true)}>
+                          Записаться на сервис
+                </Button>
+                 <Modal show={formVisible} onHide={() => setFormVisible(false)} centered>
+                  <FormOrder />
+                </Modal>
               </div>
-             <FormOrder />
+              <div id="FormOrderContactsPanel">
+                <FormOrder />
+             </div>
               </div>  
               </div>
             <iframe 
