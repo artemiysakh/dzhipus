@@ -1,5 +1,5 @@
 import React from 'react'
-import banner1 from '../assets/Баннер_2.jpg'
+import banner1 from '../assets/Group 13.jpg'
 import banner2 from '../assets/Баннер_3.jpg'
 import banner3 from '../assets/Баннер_1.jpg'
 
