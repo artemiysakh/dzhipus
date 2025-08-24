@@ -53,7 +53,7 @@ const Contacts = observer(({ id }) => {
               </div>
               <div id="FormOrderContactsPanel">
                 <FormOrder />
-             </div>
+              </div>
               </div>  
               </div>
             <iframe 
