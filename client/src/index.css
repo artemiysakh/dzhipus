@@ -178,7 +178,7 @@ header{
     left: 0;
     right: 0;
     bottom: 0;
-    /*background: linear-gradient(90deg, rgba(27, 27, 27, 0.158), rgba(0, 0, 0, 0.274));  /*линейный градиент */
+    /*background: linear-gradient(90deg, rgba(27, 27, 27, 0.158), rgba(0, 0, 0, 0.274));  линейный градиент */
     z-index: 1; 
     pointer-events: none; 
 } 
@@ -385,6 +385,9 @@ footer{
     flex-direction: column;
     justify-content: space-around;
     text-align: left;
+     @media (max-width: 992px){
+        margin-top: 10px;
+    }
 }
 .title_footer_block{
     margin-bottom: 10px;
