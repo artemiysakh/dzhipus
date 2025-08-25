@@ -89,7 +89,7 @@ const saveEdit = async (id) => {
 };
    
   return (
-    <div className="container-fluid">
+   /* <div className="container-fluid">
         <div className="container">
     <Container fluid>
       <Row>
@@ -227,6 +227,146 @@ const saveEdit = async (id) => {
       </Row>
     </Container>
     </div></div>
+    */
+   <div className="page">
+     <div className="orders">
+      <div className="card">
+         <div className="card-body header"><h2>Заказы</h2></div>
+          <div className="card-body content">
+             <div className="orders-table">
+              <table>
+                <thead>
+                    <tr>
+                <th>Пользователь</th>
+                <th>Телефон</th>
+                <th>Тип услуги</th>
+                <th>Описание</th>
+                <th>Время</th>
+                <th>Мастер</th>
+                <th>Цена</th>
+                <th>Статус</th>
+                <th>Редактировать</th>
+                <th>Удалить</th>
+              </tr>
+            </thead>
+            <tbody>
+               {orders.map(order => (
+                <tr key={order._id}>
+                  <td>{order.name}</td>
+                  <td>{order.phone}</td>
+                  <td>
+                    {editId === order._id ? (
+                      <input
+                        value={editFields.type}
+                        onChange={e => setEditFields({ ...editFields, type: e.target.value })}
+                      />
+                    ) : (
+                      order.type
+                    )}
+                  </td>
+                  <td>
+                    {editId === order._id ? (
+                      <input
+                        value={editFields.description}
+                        onChange={e => setEditFields({ ...editFields, description: e.target.value })}
+                      />
+                    ) : (
+                      order.description
+                    )}
+                  </td>
+                   <td>
+                    {editId === order._id ? (
+                      <>
+                      <input
+                      type='date'
+                        value={editFields.date}
+                        onChange={e => setEditFields({ ...editFields, date: e.target.value })}
+                      />
+                      <input
+                      type='time'
+                        value={editFields.hour}
+                        onChange={e => setEditFields({ ...editFields, hour: e.target.value })}
+                      />
+                      </>
+                    ) : (
+                   new Date(order.time).toLocaleString('ru-RU')
+                    )}
+                  </td>
+                  <td>
+                    {editId === order._id ? (
+                      <Dropdown className="mt-2 mb-2">
+                        <Dropdown.Toggle className="dropdown_menu">{editFields.master}</Dropdown.Toggle>
+                        <Dropdown.Menu>
+                          {masters.map(s => (
+                            <Dropdown.Item
+                              key={s}
+                              onClick={() => setEditFields({ ...editFields, master: s })}
+                            >
+                              {s}
+                            </Dropdown.Item>
+                          ))}
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    ) : (
+                      order.master
+                    )}
+                  </td>
+                  <td>
+                    {editId === order._id ? (
+                      <input type="number"
+                        value={editFields.price}
+                        onChange={e => setEditFields({ ...editFields, price: Number(e.target.value) })}
+                      />
+                    ) : (
+                      order.price
+                    )}
+                  </td>
+                  <td>
+                    {editId === order._id ? (
+                      <Dropdown className="mt-2 mb-2">
+                        <Dropdown.Toggle className="dropdown_menu">{editFields.status}</Dropdown.Toggle>
+                        <Dropdown.Menu>
+                          {statuses.map(s => (
+                            <Dropdown.Item
+                              key={s}
+                              onClick={() => setEditFields({ ...editFields, status: s })}
+                            >
+                              {s}
+                            </Dropdown.Item>
+                          ))}
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    ) : (
+                      order.status
+                    )}
+                  </td>
+                  <td>
+                    {editId === order._id ? (
+                      <>
+                        <Button variant="success" size="sm" onClick={() => saveEdit(order._id)}>Сохранить</Button>{' '}
+                        <Button variant="secondary" size="sm" onClick={cancelEdit} style={{marginTop:'5px'}}>Отмена</Button>
+                      </>
+                    ) : (
+                      <Button variant="white" onClick={() => startEdit(order)}>
+                        <FiEdit size={20} color="#00bdfcff" />
+                      </Button>
+                    )}
+                  </td>
+                  <td>
+                    <Button variant="white" onClick={async () => {
+    await deleteOrder(order._id); setOrders(orders.filter(o => o._id !== order._id))}}>
+                      <TiDelete size={30} color="red"  />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+             </table>
+          </div>
+         </div> 
+      </div>
+      </div>
+      </div>
   )
 })
 export default AdminOrders;
