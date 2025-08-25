@@ -1,7 +1,7 @@
 import React, {FC,  useContext,  useEffect, useState} from 'react';
 import {observer} from 'mobx-react-lite'
 import UserService from '../../services/UserService';
-import {Table, Button, Container, Col, Row} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import { IUser } from '../../models/IUser';
 import { Context } from '../..';
 
@@ -49,11 +49,13 @@ const handleResendActivation = async (userId: string, userEmail: string) => {
 };
 
     return (
-        <Container fluid>
-                <Row>
-                  <Col md={10}>
-                    <h2>Пользователи</h2>
-                    <Table striped bordered hover>
+  <div className="page">
+     <div className="orders">
+      <div className="card">
+         <div className="card-body header"><h2>Пользователи</h2></div>
+            <div className="card-body content">
+             <div className="orders-table">
+              <table>
                       <thead>
                         <tr>
                           <th>Email</th>
@@ -85,10 +87,12 @@ const handleResendActivation = async (userId: string, userEmail: string) => {
                           </React.Fragment>
                         ))}
                       </tbody>
-                    </Table>
-                  </Col>
-                </Row>
-              </Container>
+                    </table>
+          </div>
+         </div> 
+      </div>
+      </div>
+      </div>
               
     )
 }

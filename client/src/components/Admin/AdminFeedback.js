@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
-import {Button, Container, Col} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import { observer } from 'mobx-react-lite';
-import {Row,Table } from 'react-bootstrap';
 import { TiDelete } from "react-icons/ti";
 import { deleteFeedback, fetchFeedbacks } from '../../http/AdminApi';
 
@@ -17,12 +16,14 @@ const AdminFeedback= observer(() => {
   }, [])
 
   return (
-    <Container fluid>
-      <Row>
-        <Col md={10}>
-          <h2>Обратная связь</h2>
-          <Table striped bordered hover>
-            <thead>
+  <div className="page">
+    <div className="orders">
+      <div className="card">
+         <div className="card-body header"><h2>Обратная связь</h2></div>
+         <div className="card-body content">
+             <div className="orders-table">
+              <table>
+              <thead>
               <tr>
                 <th>ФИО</th>
                 <th>Телефон</th>
@@ -49,10 +50,12 @@ const AdminFeedback= observer(() => {
                 </tr>
               ))}
             </tbody>
-          </Table>
-        </Col>
-      </Row>
-    </Container>
+           </table>
+          </div>
+         </div> 
+      </div>
+      </div>
+      </div>
   )
 })
 export default AdminFeedback;

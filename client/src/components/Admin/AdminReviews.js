@@ -1,8 +1,7 @@
 import React, { useState, useEffect} from 'react';
-import {Button, Container, Col, Dropdown} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import { observer } from 'mobx-react-lite';
 import {fetchAllReviews} from '../../http/ServiceApi';
-import {Row,Table } from 'react-bootstrap';
 import { TiDelete } from "react-icons/ti";
 import { deleteReview } from '../../http/AdminApi';
 
@@ -18,20 +17,22 @@ const AdminReviews= observer(() => {
   }, [])
 
   return (
-    <Container fluid>
-      <Row>
-        <Col md={10}>
-          <h2>Отзывы</h2>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>ФИО</th>
-                <th>Оценка</th>
-                <th>Комментарий</th>
-                <th>Дата</th>
-                <th>Удалить</th>
-              </tr>
-            </thead>
+    <div className="page">
+     <div className="orders">
+      <div className="card">
+         <div className="card-body header"><h2>Отзывы</h2></div>
+          <div className="card-body content">
+             <div className="orders-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ФИО</th>
+                    <th>Оценка</th>
+                    <th>Комментарий</th>
+                    <th>Дата</th>
+                    <th>Удалить</th>
+                  </tr>
+              </thead>
             <tbody>
               {reviews.map(review => (
                 <tr key={review._id}>
@@ -48,10 +49,12 @@ const AdminReviews= observer(() => {
                 </tr>
               ))}
             </tbody>
-          </Table>
-        </Col>
-      </Row>
-    </Container>
+           </table>
+          </div>
+         </div> 
+      </div>
+      </div>
+      </div>
   )
 })
 export default AdminReviews;
