@@ -305,12 +305,12 @@ textarea{
         align-items: center;   
     }
 }
-#OrderButtonContactsPanel{
+#OrderButtonContactsPanelNew{
     @media (min-width:530px) {
         display: none;  
     }
 }
-#FormOrderContactsPanel{
+#FormOrderContactsPanelNew{
     @media (max-width:530px) {
         display: none;  
     }
