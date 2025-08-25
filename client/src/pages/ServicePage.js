@@ -209,7 +209,7 @@ const ServicePage = observer(() => {
                   setDescription(e.target.value)
                   if (errors.description) setErrors({...errors, description: ''})
                 }}
-                placeholder="Опишите Вашу проблему"
+                placeholder="Опишите Вашу проблему или выберите услуги выше, кликнув на название"
                 isInvalid={!!errors.description}
               />
               <Form.Control.Feedback type="invalid">
