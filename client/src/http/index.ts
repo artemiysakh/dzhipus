@@ -3,7 +3,6 @@ import { AuthResponse } from '../models/response/AuthResponse';
 
 export const API_URL =  process.env.REACT_APP_API_URL || 'https://dzhipusserver-production.up.railway.app/api'
 
-console.log(API_URL)
 
 const $api = axios.create({
     withCredentials: true,
