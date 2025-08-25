@@ -305,16 +305,18 @@ textarea{
         align-items: center;   
     }
 }
-#OrderButtonContactsPanelNew{
-    @media (min-width:530px) {
-        display: none;  
-    }
+@media (min-width: 530px) {
+  #OrderButtonContactsPanelNew {
+    display: none;
+  }
 }
-#FormOrderContactsPanelNew{
-    @media (max-width:530px) {
-        display: none;  
-    }
+
+@media (max-width: 530px) {
+  #FormOrderContactsPanelNew {
+    display: none;
+  }
 }
+
 
 #contactsInf{
      @media (min-width:850px) {
