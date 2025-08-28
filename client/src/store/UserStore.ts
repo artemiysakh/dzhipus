@@ -79,6 +79,7 @@ export default class UserStore{
         } catch (e: any) {
             console.log(e.response?.data?.message);
             this.setErrors(e.response?.data?.message);
+            localStorage.removeItem('token');
         } finally{
             this.setLoading(false);
         }

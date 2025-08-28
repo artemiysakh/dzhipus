@@ -17,7 +17,10 @@ if (token) {
 
     return config;
 })
-$api.interceptors.response.use((config) => config, async (error) => {
+$api.interceptors.response.use((config) => {return config}, async (error) =>{
+    
+    
+    /*config, async (error) => {
     const originalRequest = error.config;
 
     if (error.response?.status === 401 && originalRequest && !originalRequest._isRetry) {
@@ -31,7 +34,7 @@ $api.interceptors.response.use((config) => config, async (error) => {
             console.log('Refresh token error:', e);
             localStorage.removeItem('token');
         }
-    }
+    }*/
     throw error;
 });
 
